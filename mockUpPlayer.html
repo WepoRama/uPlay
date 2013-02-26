@@ -7,17 +7,24 @@
 <body>
 	<div id="uPlayFrame">
 		<div id="playFunction">
-			<img id="start" src="player_start.gif">
-			<img id="play" src="player_play.gif">
-			<img id="pause" src="player_pause.gif">
+			<span><img id="start" src="player_start.gif"></span>
+			<span><img id="play" src="player_play.gif"></span>
+			<span><img id="pause" src="player_pause.gif"></span>
 			<img id="stop" src="player_stop.gif">
 			<img id="end" src="player_end.gif">
 		</div>
 		<div>				
-			<img id="rew" src="player_rew.gif">					
-			<meter class="progress" style="width:400px; height:100px"value="23"in="0" max="100"></meter>			
+			<img id="rew" src="player_rew.gif">
+			<span>
+				<meter class="progress" id="progress" style="width:300px; height:45px"value="23"in="0" max="100"></meter>
+			</span>
 			<img id="fwd" src="player_fwd.gif">
 		</div>
+		<div>
+
+				<meter class="progress" id="volume" style="width:300px; height:45px"value="23"in="0" max="100"></meter>
+		</div>
+			
 	</div>	
 </body>
 

@@ -5,7 +5,77 @@
 	border:5px solid #69db0e;
 	border-radius:25px;
 }
-
+#player_start{
+	background: url(player_start.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_play{
+	background: url(player_play.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_pause{
+	background: url(player_pause.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_stop{
+	background: url(player_stop.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_end{
+	background: url(player_end.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_rew{
+	background: url(player_rew.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_fwd{
+	background: url(player_fwd.gif);
+	/*width: 20px; eftir að finna stærð
+	height: 20px;  
+	margin-top: px; og staðsetnin
+	margin-left: px;*/
+}
+#player_progress{
+	width: 300px;
+	height: 45px;
+	background: #B9F84F;
+	border:5px solid #69DB0E;
+	padding:10px 40px; 
+	border-radius: 25px;
+	/*position: relative;
+	top: -65px; eigum eftir að finna staðsetningu
+	*/
+}
+#player_volume{
+	width: 300px;
+	height: 45px;
+	background: #B9F84F;
+	border:5px solid #69DB0E;
+	padding:10px 40px; 
+	border-radius: 25px;
+	/*position: relative;
+	top: -65px; eigum eftir að finna staðsetningu
+	*/
+}
 .progress { 
 	position: relative;
 	background: #B9F84F;
