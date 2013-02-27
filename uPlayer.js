@@ -32,75 +32,37 @@
 			$('player').appendTo(this);
 			$('player').addClass('uPlayerAudio');
 
-			$(this).append(
-
-				// Hér set ég inn html eins og muckUp er. strengur + strengur.
-
+			$(this).append( "<div id='uPlayFrame'>" +
+				"<div id='playFunction'>" +
+				"<img id='player_start' src='player_start.gif'>" +
+				"<img id='player_play' src='player_play.gif'>" +
+				"<img id='player_pause' src='player_pause.gif'>" +
+				"<img id='player_stop' src='player_stop.gif'>" +
+				"<img id='player_end' src='player_end.gif'>" +
+				"</div>" +
+				"<div>" +
+				"<img id='player_rew' src='player_rew.gif'>" +
+				"<span>" + 
+				"<meter class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
+				"</span>" +
+				"<img id='player_fwd' src='player_fwd.gif'>" + 
+				"</div>" +
+				"<div>" +
+				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +
+				"</div>" +
+				"</div>"
 				);
-/*
-			var uPlayerFrame = document.createElement('div');
-			uPlayerFrame.setAttribute('id', 'uPlayerFrame');
-			document.getElementById('uPlayerFrame').appendChild('audio');
 
-			var playFunction = document.createElement('div');
-			playFunction.setAttribute('id', 'playFunction');
-			document.getElementById('playFunction').appendChild('uPlayerFrame');
-
-			var player_start = document.createElement('span');
-			player_start.setAttribute('id', 'player_start');
-			document.getElementById('player_start').appendChild('playFunction');
-
-			var player_play = document.createElement('span');
-			player_play.setAttribute('id', 'player_play');
-			document.getElementById('player_play').appendChild('playFunction');
-
-			var player_pause = document.createElement('span');
-			player_pause.setAttribute('id', 'player_pause');
-			document.getElementById('player_pause').appendChild('playFunction');
-
-			var player_stop = document.createElement('span');
-			player_stop.setAttribute('id', 'player_stop');
-			document.getElementById('player_stop').appendChild('playFunction');
-
-			var player_end = document.createElement('span');
-			player_end.setAttribute('id', 'player_end');
-			document.getElementById('player_end').appendChild('playFunction');
-
-			var playProgressFunction = document.createElement('div');
-			playFunction.setAttribute('id', 'playProgressFunction');
-			document.getElementById('playProgressFunction').appendChild('uPlayerFrame');
-
-			var player_rew = document.createElement('span');
-			player_rew.setAttribute('id', 'player_rew');
-			document.getElementById('player_rew').appendChild('playProgressFunction');
-			
-			var player_progress = document.createElement('meter');
-			player_progress.setAttribute('id', 'player_progress');
-			document.getElementById('player_progress').appendChild('playProgressFunction');
-
-			var player_fwd = document.createElement('span');
-			player_fwd.setAttribute('id', 'player_fwd');
-			document.getElementById('player_fwd').appendChild('playProgressFunction');
-
-			var player_volume = document.createElement('meter');
-			player_volume.setAttribute('id', 'player_volume');
-			document.getElementById('player_volume').appendChild('playProgressFunction');
-*/
 			// 2. hengja þetta HTML á elementið sem við erum að vinna á
 
 
-			var playButton = $("<button value='play'>");
-			playButton.click(function(){
-				consol.log("inn í play function")
-				player.play();
-			});
 
 			$('id á takkanumn').click(function(){
 				uPlaySong();
 			});
 
 			// Síðan þarf að útfæra fallið fyrir uPlaySong(); athuga með að skipta um mynd ef fyrir play og pause.
-
+			// og gera þetta fyrir hverja virkni.
 		});
 	};
 
