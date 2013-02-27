@@ -24,8 +24,11 @@
               var playlist = [ "http://path.to/first_song.mp3",
                                "http://path.to/second_song.mp3",
                                "http://path.to/third_song.mp3" ];
+              var options = {
+                autoPlay: true
+              };
 
-              $("#thePlayer").uPlayer( playlist );
+              $("#thePlayer").uPlayer( playlist, options );
               // Optionally, the function should accept an object containing optional values, 
               // such as a boolean "autostart" value, i.e. if the player should start playing
               // immediately etc.

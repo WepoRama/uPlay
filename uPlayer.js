@@ -1,21 +1,46 @@
+// Assignment 3. WEOP 2013
+// uPlayer
+// Carsten Petersen, Elín Gylfadóttir, Sigrún Inga Kristinsdóttir
+
 ;
 
-function($){
-	$.fn.uPlayer = function(userOption){
+(function($){
+	$.fn.uPlayer = function(playlist, userOptions){
 
-		var defaultOption = {
-			autoPlay: false,
-			defaultVolume: 80
-		};
-
-		var finalOption = $.extend(defaultOption, userOption);
+		// það gætu þurft að vera breytur hér.
 
 		return this.each(function(elem){
+
+		var defaultOptions = {
+			// more options is better than fewer
+			autoPlay: false,
+			defaultVolume: 80,
+			errorMsg: "Unskyld men sangen kan ikke blive loaded"
+		};
+
+		var finalOptions = $.extend(defaultOptions, userOptions);
 			//TODO:
+			// ef við ætlum að útfæra fallback þá að setja 
+			/* if(Modernizr.audio == true){
+				okkar player hér
+			}
+			else
+				einhvern vara player hér. t.d. niftyPlayer
+			*/
 			// 1. búa til HTML fyrir spilarann
-			// var audio = document.createElement('audio');
+			var player = document.createElement('audio');
+			$('player').appendTo(this);
+			$('player').addClass('uPlayerAudio');
+
+			$(this).append(
+
+				// Hér set ég inn html eins og muckUp er. strengur + strengur.
+
+				);
+/*
 			var uPlayerFrame = document.createElement('div');
 			uPlayerFrame.setAttribute('id', 'uPlayerFrame');
+			document.getElementById('uPlayerFrame').appendChild('audio');
 
 			var playFunction = document.createElement('div');
 			playFunction.setAttribute('id', 'playFunction');
@@ -60,26 +85,23 @@ function($){
 			var player_volume = document.createElement('meter');
 			player_volume.setAttribute('id', 'player_volume');
 			document.getElementById('player_volume').appendChild('playProgressFunction');
-
+*/
 			// 2. hengja þetta HTML á elementið sem við erum að vinna á
 
-			var player = $("<audio></audio>");
 
 			var playButton = $("<button value='play'>");
 			playButton.click(function(){
+				consol.log("inn í play function")
 				player.play();
 			});
 
-			player.on("progress", function(e){
-				// TODO: uppfæra progressbarinn
+			$('id á takkanumn').click(function(){
+				uPlaySong();
 			});
 
-			player.on("ended", function(e){
-				// TODO: skipta yfir á næsta lag
-			})
+			// Síðan þarf að útfæra fallið fyrir uPlaySong(); athuga með að skipta um mynd ef fyrir play og pause.
 
-
-		})
-	}
+		});
+	};
 
 })(jQuery);
