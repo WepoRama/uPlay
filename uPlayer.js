@@ -62,6 +62,7 @@
 				if(finalOptions.autoPlay == true){
 					player.play();
 				}
+				
 			}
 			// Event handlers and funtions.	
 
@@ -70,16 +71,18 @@
 				/* 
 				* vantar að laga þetta fall. Það byrjar á síðasta laginu og hættir svo - SIK
 				*/
-				if(songCount < playlist.length){
-					player.src = playlist[songCount];
-					songCount++
-					player.play();
-					console.log(songCount);
+
+				player.src = playlist[songCount];
+				player.play();
+				while(songCount < playlist.length){
 					
+					console.log(songCount);
+					songCount++					
 				}
-				else{
+				/*else{
 					player.pause();
-				}
+					console.log("pause in player_play function")
+				}*/
 				
 				console.log("in the player_play function")
 			})
@@ -93,9 +96,9 @@
 
 			/* Stop function.
 			*/
-			// Finna út hvernig það stoppar en ekki pausar - SIK
 			$('#player_stop').click(function(){
 				player.pause();
+				songCount = 0;
 				console.log("in the player_stop function")
 			})
 
