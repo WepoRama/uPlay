@@ -28,7 +28,7 @@
 					einhvern vara player hér. t.d. niftyPlayer
 					þetta er ekki krafa heldur aukabónus.
 				*/
-			var songCount = 0;	
+			
 
 			// HTML fyrir spilarann
 			var player = document.createElement('audio');
@@ -46,7 +46,7 @@
 				"<div>" +
 				"<img id='player_rew' src='image/player_rew.gif'>" +
 				"<span>" + 
-				"<meter class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
+				"<progress class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
 				"</span>" +
 				"<img id='player_fwd' src='image/player_fwd.gif'>" + 
 				"</div>" +
@@ -55,38 +55,67 @@
 				"</div>" +
 				"</div>"
 			);
+
+			var songCount = 0;	
+			player.src = playlist[songCount];
 			
+			$(player).bind("ended", function(){
+				songCount++;
+				if (songCount > playlist.length-1) {
+					songCount = 0;
+				};
+				playSong();
+			})
 			// autoPlay ef finalOpstion autoPlay er á true
 			if(Modernizr.audio == true){
-				player.src = playlist[0];
+				//player.src = playlist[0];
 				if(finalOptions.autoPlay == true){
-					player.play();
+					playSong();
 				}
 				
 			}
 			// Event handlers and funtions.	
 
-			/* Play function. */
-			$('#player_play').click(function(){
-				/* 
-				* vantar að laga þetta fall. Það byrjar á síðasta laginu og hættir svo - SIK
-				*/
+			/* Play button */			
+			$('#player_play').click(function(){ playSong()	})
 
-				player.src = playlist[songCount];
-				player.play();
-				while(songCount < playlist.length){
-					
+			/* Play function. */
+			function playSong(){
+				//songCount++;
+				setTimeout(function (){
+					player.src = playlist[songCount];
+					player.play();
+				}, 500); // Hér á eftir að setja breytu með sing length.
+				console.log("in the player_play function")
+			}
+
+				/*while(songCount < playlist.length){
+					player.src = playlist[songCount];
+					//player.play();
 					console.log(songCount);
 					songCount++					
-				}
+				}*/
+				/*
+				if (songCount < playlist.length) {
+					player.src = playlist[songCount];
+					player.play();
+					console.log("songCount" + songCount)
+				};
+				songCount++;*/
+
 				/*else{
 					player.pause();
 					console.log("pause in player_play function")
 				}*/
-				
-				console.log("in the player_play function")
-			})
-
+				/*for (var i = 0; i < playlist.length; i++) {
+					next();
+				};*/
+			      	
+			    /*player.src = playlist[songCount];
+			   	player.play();
+			   	songCount++;*/
+			   	//player.src = playlist[];
+			   	//player.play();
 			/* Pause function*/
 			// þetta fall er ekki klárt. Reyna að útfæra þannig að pause og play séu sami gaurinn - SIK
 			$('#player_pause').click(function(){
@@ -96,12 +125,13 @@
 
 			/* Stop function.
 			*/
-			$('#player_stop').click(function(){
+			$('#player_stop').click(function(){ stopSong(); })
+
+			function stopSong(){
 				player.pause();
 				songCount = 0;
 				console.log("in the player_stop function")
-			})
-
+			}
 
 			/* Next song function. Ef counter er minni en núll fer 
 			*  spilarinn á pause. */
