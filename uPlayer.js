@@ -88,6 +88,18 @@
 				}
 			})
 
+			/* Increase songcount when song ends.
+			 If last song then loop back to start of list.*/
+			 function songEnd(){
+			$("audio").on("ended", function() { 
+		    	songCount++;
+
+		    	if (songCount > playlist-1){
+		    		songCount = 0;
+		    	}
+			})}
+
+
 			/* Play function. */
 			function playSong(){
 				//songCount++;
@@ -129,7 +141,7 @@
 				}
 				else{
 					playSong();
-					console.log("in the player_start function")
+					console.log("Previous song: " + songCount)
 				}
 			}
 
@@ -139,14 +151,17 @@
 			function nextSong(){
 				songCount++;
 				if (songCount > playlist.length-1) {
-					pauseSong();
+					songCount = 0;
+					playSong();
+					/*pauseSong();
 					songCount = playlist.length-1;
-					console.log("pause")
+					console.log("pause")*/
 				}
 				else{
 					playSong();
-					console.log("in the player_end function")	
+					//console.log("Next song: " + songCount)	
 				}
+				console.log("Next song: " + songCount)
 			}
 
 		});
