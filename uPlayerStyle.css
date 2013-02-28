@@ -5,70 +5,28 @@
 
 #uPlayFrame {
 	padding-left: 20px;
-	width: 700px;
+	width: 500px;
 	height: 280px;
 	border:5px solid #69db0e;
 	border-radius:25px;
 }
-#player_start{
-	background: url(image/player_start.gif);
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_play{
-	background: url(image/player_play.gif);
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_pause{
-	background: url(image/player_pause.gif);
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_stop{
-	background: url(image/player_stop.gif);
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_end{
-	background: url(image/player_end.gif); 
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_rew{
-	background: url(image/player_rew.gif); 
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
-}
-#player_fwd{
-	background: url(image/player_fwd.gif);
-	/*margin-top: px; og staðsetnin
-	margin-left: px;*/
+.button{
+	height: 100px;
+	width: 100px;
 }
 #player_progress{
-	width: 300px;
-	height: 45px;
-	background: #B9F84F;
-	border:5px solid #69DB0E;
-	padding:10px 40px; 
-	border-radius: 25px;
 	position: relative;
-	top: -65px; /*eigum eftir að finna staðsetningu*/
+	top: -55px; /*eigum eftir að finna staðsetningu*/
 }
-#player_volume{
-	width: 300px;
-	height: 45px;
-	background: #B9F84F;
-	border:5px solid #69DB0E;
-	padding:10px 40px; 
-	border-radius: 25px;
+#player_volume{	
 	position: relative;
-	top: -45px; /*eigum eftir að finna staðsetningu*/
-	left: 127px;
+	top: -35px; /*eigum eftir að finna staðsetningu*/
+	left: 100px;
 
 }
 .progress { 
-	position: relative;
+	width: 230px;
+	height: 40px;
 	background: #B9F84F;
 	border:5px solid #69DB0E;
 	padding:10px 40px; 
