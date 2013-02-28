@@ -85,39 +85,9 @@
 				setTimeout(function (){
 					player.src = playlist[songCount];
 					player.play();
-				}, 500); // Hér á eftir að setja breytu með sing length.
+				}, player.duration); // Hér á eftir að setja breytu með sing length.
 				console.log("in the player_play function")
 			}
-
-				/*while(songCount < playlist.length){
-					player.src = playlist[songCount];
-					//player.play();
-					console.log(songCount);
-					songCount++					
-				}*/
-				/*
-				if (songCount < playlist.length) {
-					player.src = playlist[songCount];
-					player.play();
-					console.log("songCount" + songCount)
-				};
-				songCount++;*/
-
-				/*else{
-					player.pause();
-					console.log("pause in player_play function")
-				}*/
-				/*for (var i = 0; i < playlist.length; i++) {
-					next();
-				};*/
-			      	
-			    /*player.src = playlist[songCount];
-			   	player.play();
-			   	songCount++;*/
-			   	//player.src = playlist[];
-			   	//player.play();
-			/* Pause function*/
-			// þetta fall er ekki klárt. Reyna að útfæra þannig að pause og play séu sami gaurinn - SIK
 			$('#player_pause').click(function(){
 				player.pause();
 				console.log("in the player_pause function")
