@@ -28,7 +28,8 @@
 					einhvern vara player hér. t.d. niftyPlayer
 					þetta er ekki krafa heldur aukabónus.
 				*/
-			
+			var playImage = "image/player_play.gif"
+			var pauseImage = "image/player_pause.gif"
 
 			// HTML fyrir spilarann
 			var player = document.createElement('audio');
@@ -38,8 +39,7 @@
 			$(this).append( "<div id='uPlayFrame'>" +
 				"<div id='playFunction'>" +
 				"<img id='player_start' src='image/player_start.gif'>" +
-				"<img id='player_play' src='image/player_play.gif'>" +
-				"<img id='player_pause' src='image/player_pause.gif'>" +
+				"<img id='player_play' src='image/player_pause.gif'>" +
 				"<img id='player_stop' src='image/player_stop.gif'>" +
 				"<img id='player_end' src='image/player_end.gif'>" +
 				"</div>" +
@@ -58,7 +58,8 @@
 
 			var songCount = 0;	
 			player.src = playlist[songCount];
-			
+			var isPlaying = true;
+
 			$(player).bind("ended", function(){
 				songCount++;
 				if (songCount > playlist.length-1) {
@@ -74,31 +75,46 @@
 				}
 				
 			}
-			// Event handlers and funtions.	
+			// Event handlers and functions.	
 
 			/* Play button */			
-			$('#player_play').click(function(){ playSong()	})
+			$('#player_play').click(function(){ 
+				if(isPlaying == true){
+					pauseSong();
+				}
+				else{
+					playSong();
+				}
+			})
 
 			/* Play function. */
 			function playSong(){
 				//songCount++;
-				setTimeout(function (){
+				//setTimeout(function (){
+					$("#player_play").attr("src", pauseImage);
 					player.src = playlist[songCount];
-					player.play();
-				}, player.duration); // Hér á eftir að setja breytu með sing length.
+					player.play();					
+					isPlaying = true;
+				//});//, player.duration); // Hér á eftir að setja breytu með sing length.
 				console.log("in the player_play function")
 			}
-			$('#player_pause').click(function(){
+
+			/* Pause function. */
+			function pauseSong(){
+				$("#player_play").attr("src", playImage);
 				player.pause();
-				console.log("in the player_pause function")
-			})
+				isPlaying = false;
+				console.log("in the player_pause function")	
+			}
 
 			/* Stop function.
 			*/
 			$('#player_stop').click(function(){ stopSong(); })
 
 			function stopSong(){
+				$("#player_play").attr("src", playImage);
 				player.pause();
+				isPlaying = false;
 				songCount = 0;
 				console.log("in the player_stop function")
 			}
