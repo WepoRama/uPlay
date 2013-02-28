@@ -54,7 +54,7 @@
 				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +
 				"</div>" +
 				"</div>"
-				);
+			);
 			
 			// autoPlay ef finalOpstion autoPlay er á true
 			if(Modernizr.audio == true){
@@ -65,35 +65,68 @@
 			}
 			// Event handlers and funtions.	
 
+			/* Play function. */
 			$('#player_play').click(function(){
 				/* 
-				* vantar að laga þetta fall. Það byrjar á síðasta laginu og hættir svo 
+				* vantar að laga þetta fall. Það byrjar á síðasta laginu og hættir svo - SIK
 				*/
 				while(songCount < playlist.length-1){
 					player.src = playlist[songCount];
 					player.play();
-					songCount++;
+					songCount++
 				}	
 				console.log("in the player_play function")
-			});
+			})
 
+			/* Pause function*/
+			// þetta fall er ekki klárt. Reyna að útfæra þannig að pause og play séu sami gaurinn
+			// og lagið fari á pause en ekki stop. - SIK
+			$('#player_pause').click(function(){
+				player.play();
+				console.log("in the player_pause function")
+			})
+
+			/* Stop function.
+			*/
+			// Held að þetta fall sé fullbúið - SIK
 			$('#player_stop').click(function(){
 				player.pause();
 				console.log("in the player_stop function")
-			});
+			})
 
+
+			/* Next song function. Ef counter er minni en núll fer 
+			*  spilarinn á pause. */
+			// Held að þetta fall sé fullbúið - SIK
 			$('#player_start').click(function(){
 				songCount--;
-				player.src = playlist[songCount];
-				player.play();
-				console.log("in the player_start function")
-			});
+				if (songCount < 0) {					
+					player.pause();
+					console.log("pause")
+				}
+				else{
+					player.src = playlist[songCount];
+					player.play();
+					console.log("in the player_start function")
+				}
+				
+			})
 
+			/* Next song function. Ef counter er hærri en lengd playlistans fer 
+			*  spilarinn á pause. */
+			// Held að þetta fall sé fullbúið - SIK
 			$('#player_end').click(function(){
 				songCount++;
-				player.src = playlist[songCount];
-				player.play();
-				console.log("in the player_end function")
+				if (songCount > playlist.length-1) {
+					player.pause();
+					console.log("pause")
+				}
+				else{
+					player.src = playlist[songCount];
+					player.play();
+					console.log("in the player_end function")	
+				}
+				
 			})
 
 		});
