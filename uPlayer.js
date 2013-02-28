@@ -37,18 +37,18 @@
 
 			$(this).append( "<div id='uPlayFrame'>" +
 				"<div id='playFunction'>" +
-				"<img id='player_start' src='player_start.gif'>" +
-				"<img id='player_play' src='player_play.gif'>" +
-				"<img id='player_pause' src='player_pause.gif'>" +
-				"<img id='player_stop' src='player_stop.gif'>" +
-				"<img id='player_end' src='player_end.gif'>" +
+				"<img id='player_start' src='image/player_start.gif'>" +
+				"<img id='player_play' src='image/player_play.gif'>" +
+				"<img id='player_pause' src='image/player_pause.gif'>" +
+				"<img id='player_stop' src='image/player_stop.gif'>" +
+				"<img id='player_end' src='image/player_end.gif'>" +
 				"</div>" +
 				"<div>" +
-				"<img id='player_rew' src='player_rew.gif'>" +
+				"<img id='player_rew' src='image/player_rew.gif'>" +
 				"<span>" + 
 				"<meter class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
 				"</span>" +
-				"<img id='player_fwd' src='player_fwd.gif'>" + 
+				"<img id='player_fwd' src='image/player_fwd.gif'>" + 
 				"</div>" +
 				"<div>" +
 				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +

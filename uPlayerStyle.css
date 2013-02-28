@@ -11,37 +11,37 @@
 	border-radius:25px;
 }
 #player_start{
-	background: url(player_start.gif);
+	background: url(image/player_start.gif);
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_play{
-	background: url(player_play.gif);
+	background: url(image/player_play.gif);
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_pause{
-	background: url(player_pause.gif);
+	background: url(image/player_pause.gif);
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_stop{
-	background: url(player_stop.gif);
+	background: url(image/player_stop.gif);
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_end{
-	background: url(player_end.gif); 
+	background: url(image/player_end.gif); 
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_rew{
-	background: url(player_rew.gif); 
+	background: url(image/player_rew.gif); 
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
 #player_fwd{
-	background: url(player_fwd.gif);
+	background: url(image/player_fwd.gif);
 	/*margin-top: px; og staðsetnin
 	margin-left: px;*/
 }
