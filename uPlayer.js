@@ -70,25 +70,30 @@
 				/* 
 				* vantar að laga þetta fall. Það byrjar á síðasta laginu og hættir svo - SIK
 				*/
-				while(songCount < playlist.length-1){
+				if(songCount < playlist.length){
 					player.src = playlist[songCount];
-					player.play();
 					songCount++
-				}	
+					player.play();
+					console.log(songCount);
+					
+				}
+				else{
+					player.pause();
+				}
+				
 				console.log("in the player_play function")
 			})
 
 			/* Pause function*/
-			// þetta fall er ekki klárt. Reyna að útfæra þannig að pause og play séu sami gaurinn
-			// og lagið fari á pause en ekki stop. - SIK
+			// þetta fall er ekki klárt. Reyna að útfæra þannig að pause og play séu sami gaurinn - SIK
 			$('#player_pause').click(function(){
-				player.play();
+				player.pause();
 				console.log("in the player_pause function")
 			})
 
 			/* Stop function.
 			*/
-			// Held að þetta fall sé fullbúið - SIK
+			// Finna út hvernig það stoppar en ekki pausar - SIK
 			$('#player_stop').click(function(){
 				player.pause();
 				console.log("in the player_stop function")
@@ -102,6 +107,7 @@
 				songCount--;
 				if (songCount < 0) {					
 					player.pause();
+					songCount = 0;
 					console.log("pause")
 				}
 				else{
@@ -119,6 +125,7 @@
 				songCount++;
 				if (songCount > playlist.length-1) {
 					player.pause();
+					songCount = playlist.length-1;
 					console.log("pause")
 				}
 				else{
