@@ -122,10 +122,10 @@
 
 			function prevSong(){
 				songCount--;
-				if (songCount < 0) {					
-					pauseSong();
-					songCount = 0;
-					console.log("pause")
+				if (songCount < 0) {
+					songCount = playlist.length-1;
+					playSong();
+					console.log("play in if prevSong")
 				}
 				else{
 					playSong();
@@ -139,9 +139,9 @@
 			function nextSong(){
 				songCount++;
 				if (songCount > playlist.length-1) {
-					pauseSong();
-					songCount = playlist.length-1;
-					console.log("pause")
+					songCount = 0;
+					playSong();
+					console.log("play in if nextSong")
 				}
 				else{
 					playSong();
