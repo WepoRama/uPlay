@@ -5,8 +5,8 @@
 
 #uPlayFrame {
 	padding-left: 20px;
-	width: 500px;
-	height: 280px;
+	width: 600px;
+	height: 380px;
 	border:5px solid #69db0e;
 	border-radius:25px;
 }
@@ -23,6 +23,10 @@
 	top: -35px; /*eigum eftir að finna staðsetningu*/
 	left: 100px;
 
+}
+.listElem{
+	font-size: 28px;
+	color: #69DB0E;
 }
 .progress { 
 	width: 230px;

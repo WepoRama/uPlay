@@ -10,7 +10,7 @@
 
 		return this.each(function(elem){
 
-			//Breytur
+			/* initial */
 			var defaultOptions = {
 				// more options is better than fewer
 				autoPlay: true,
@@ -20,16 +20,7 @@
 
 			var finalOptions = $.extend(defaultOptions, userOptions);
 				
-				// ef við ætlum að útfæra fallback þá að setja 
-				/* if(Modernizr.audio == true){
-					okkar player hér
-				}
-				else
-					einhvern vara player hér. t.d. niftyPlayer
-					þetta er ekki krafa heldur aukabónus.
-				*/
-
-			// HTML fyrir spilarann
+			/* HTML fyrir spilarann */
 			var player = document.createElement('audio');
 			$('player').appendTo(this);
 			$('player').addClass('uPlayerAudio');
@@ -51,6 +42,8 @@
 				"<div>" +
 				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +
 				"</div>" +
+				"<ul id='play_list'>"+
+				"</ul>" +
 				"</div>"
 			);
 
@@ -70,12 +63,14 @@
 			})
 			// autoPlay ef finalOpstion autoPlay er á true
 			if(Modernizr.audio == true){
-				//player.src = playlist[0];
+				//setja inn loadPlaylist fallið sem tekur inn listan og ol elementið
+				loadPlaylist(playlist, "#play_list");
 				if(finalOptions.autoPlay == true){
 					playSong();
 				}
 				
 			}
+
 			// Event handlers and functions.	
 
 			/* Play / Pause button */			
@@ -87,8 +82,14 @@
 					playSong();
 				}
 			})
+			
+			$('#player_stop').click(function(){ stopSong(); })
 
-			/* Play function. */
+			$('#player_start').click(function(){ prevSong(); })
+
+			$('#player_end').click(function(){ nextSong(); })
+			
+			/* Play / pause function. */
 			function playSong(){
 				//songCount++;
 				//setTimeout(function (){
@@ -109,8 +110,6 @@
 			}
 
 			/* Stop function.*/
-			$('#player_stop').click(function(){ stopSong(); })
-
 			function stopSong(){
 				pauseSong();
 				songCount = 0;
@@ -118,8 +117,6 @@
 			}
 
 			/* Previous song function. Ef counter er minni en núll fer spilarinn á pause. */
-			$('#player_start').click(function(){ prevSong(); })
-
 			function prevSong(){
 				songCount--;
 				if (songCount < 0) {
@@ -134,8 +131,6 @@
 			}
 
 			/* Next song function. Ef counter er hærri en lengd playlistans fer spilarinn á pause. */
-			$('#player_end').click(function(){ nextSong(); })
-
 			function nextSong(){
 				songCount++;
 				if (songCount > playlist.length-1) {
@@ -147,6 +142,14 @@
 					playSong();
 					console.log("in the player_end function")	
 				}
+			}
+
+			function loadPlaylist(playlist, unorderListElem){
+				var playlistElem = " ";
+				for (var i = 0; i < playlist.length; i++) {
+					playlistElem += "<li class='listElem' id='song" + i + "'>" + playlist[i] + "</il>";
+				};
+				$(unorderListElem).append(playlistElem)
 			}
 
 		});
