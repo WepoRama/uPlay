@@ -42,8 +42,8 @@
 				"<div>" +
 				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +
 				"</div>" +
-				"<ul id='play_list'>"+
-				"</ul>" +
+				"<ol id='play_list'>"+
+				"</ol>" +
 				"</div>"
 			);
 
@@ -93,8 +93,13 @@
 			function playSong(){
 				//songCount++;
 				//setTimeout(function (){
+
 					$("#player_play").attr("src", pauseImage);
+					for (var i = 0; i < playlist.length; i++) {
+						$("#song" + i ).css("color", "#69DB0E");
+					};					
 					player.src = playlist[songCount];
+					$("#song" + songCount ).css("color", "#ff9f00");
 					player.play();					
 					isPlaying = true;
 				//});//, player.duration); // Hér á eftir að setja breytu með sing length.
