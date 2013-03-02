@@ -7,32 +7,33 @@
 	padding-left: 20px;
 	width: 600px;
 	height: 380px;
-	border:5px solid #69db0e;
+	border:5px solid #54AD0B;
 	border-radius:25px;
 }
 .button{
-	height: 100px;
-	width: 100px;
+	cursor: pointer;
+	height: 90px;
+	width: 90px;
+}
+#player_volume{
+	position: relative;
+	top: -15px;
+	height: 60px;
+	width: 60px;
 }
 #player_progress{
 	position: relative;
-	top: -55px; /*eigum eftir að finna staðsetningu*/
-}
-#player_volume{	
-	position: relative;
-	top: -35px; /*eigum eftir að finna staðsetningu*/
-	left: 100px;
-
+	top: -25px; /*eigum eftir að finna staðsetningu*/
 }
 .listElem{
 	font-size: 28px;
-	color: #69DB0E;
+	color: #54AD0B;
 }
 .progress { 
 	width: 230px;
 	height: 40px;
 	background: #B9F84F;
-	border:5px solid #69DB0E;
+	border:5px solid #54AD0B;
 	padding:10px 40px; 
-	border-radius: 25px;
+	border-radius: 15px;
 }

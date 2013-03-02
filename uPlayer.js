@@ -14,7 +14,7 @@
 			var defaultOptions = {
 				// more options is better than fewer
 				autoPlay: true,
-				defaultVolume: 80,
+				audioVolume: 0.5,
 				errorMsg: "Unskyld men sangen kan ikke blive loaded"
 			};
 
@@ -29,19 +29,18 @@
 				"<div id='playFunction'>" +
 				"<img class='button' id='player_start' src='image/player_start.gif'>" +
 				"<img class='button' id='player_play' src='image/player_pause.gif'>" +
-				"<img class='button' id='player_stop' src='image/player_stop.gif'>" +
-				"<img class='button' id='player_end' src='image/player_end.gif'>" +
+				"<img class='button' id='player_stop' src='image/player_stop.gif'>" +	
+				"<img class='button' id='player_end' src='image/player_end.gif'>" +			
+				"<img class='button' id='player_volume' src='image/volume_medium.gif'>" +
 				"</div>" +
 				"<div>" +
 				"<img class='button' id='player_rew' src='image/player_rew.gif'>" +
 				"<span>" + 
-				"<progress class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
+				"<meter class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
 				"</span>" +
 				"<img class='button' id='player_fwd' src='image/player_fwd.gif'>" + 
 				"</div>" +
 				"<div>" +
-				"<meter class='progress' id='player_volume' value='23' min='0' max='100'></meter>" +
-				"</div>" +
 				"<ol id='play_list'>"+
 				"</ol>" +
 				"</div>"
@@ -51,8 +50,23 @@
 			var songCount = 0;	
 			player.src = playlist[songCount];
 			var isPlaying = true;			
-			var playImage = "image/player_play.gif"
-			var pauseImage = "image/player_pause.gif"
+			var playImage = "image/player_play.gif";
+			var pauseImage = "image/player_pause.gif";
+			player.volume = finalOptions.audioVolume;
+			var highImage = "image/volume_high.gif";
+			var mediumImage = "image/volume_medium.gif";
+			var lowImage = "image/volume_low.gif";
+			var muteImage = "image/volume_mute.gif";
+
+			/* Progress */
+			$('#player_progress').attr('value', 0);
+			player.addEventListener("timeupdate", function(){
+				var length = player.duration;
+				var secounds = player.currentTime;
+				var progr = (secounds/length)*100;
+				$('#player_progress').val(progr);
+			})
+
 
 			$(player).bind("ended", function(){
 				songCount++;
@@ -61,21 +75,19 @@
 				};
 				playSong();
 			})
+
 			// autoPlay ef finalOpstion autoPlay er á true
-			if(Modernizr.audio == true){
+			if(Modernizr.audio === true){
 				//setja inn loadPlaylist fallið sem tekur inn listan og ol elementið
 				loadPlaylist(playlist, "#play_list");
-				if(finalOptions.autoPlay == true){
+				if(finalOptions.autoPlay === true){
 					playSong();
-				}
-				
+				}		
 			}
-
-			// Event handlers and functions.	
 
 			/* Play / Pause button */			
 			$('#player_play').click(function(){ 
-				if(isPlaying == true){
+				if(isPlaying === true){
 					pauseSong();
 				}
 				else{
@@ -89,20 +101,18 @@
 
 			$('#player_end').click(function(){ nextSong(); })
 			
+			$('#player_volume').click(function(){ palyerVolume(); })
+
 			/* Play / pause function. */
 			function playSong(){
-				//songCount++;
-				//setTimeout(function (){
-
-					$("#player_play").attr("src", pauseImage);
-					for (var i = 0; i < playlist.length; i++) {
-						$("#song" + i ).css("color", "#69DB0E");
-					};					
-					player.src = playlist[songCount];
-					$("#song" + songCount ).css("color", "#ff9f00");
-					player.play();					
-					isPlaying = true;
-				//});//, player.duration); // Hér á eftir að setja breytu með sing length.
+				$("#player_play").attr("src", pauseImage);
+				for (var i = 0; i < playlist.length; i++) {
+					$("#song" + i ).css("color", "#54AD0B");
+				};					
+				player.src = playlist[songCount];
+				$("#song" + songCount ).css("color", "#ff9f00");
+				player.play();					
+				isPlaying = true;
 				console.log("in the player_play function")
 			}
 
