@@ -14,7 +14,7 @@
 			var defaultOptions = {
 				// more options is better than fewer
 				autoPlay: true,
-				audioVolume: 0.5,
+				defaultVolume: 0.5,
 				errorMsg: "Unskyld men sangen kan ikke blive loaded"
 			};
 
@@ -29,9 +29,8 @@
 				"<div id='playFunction'>" +
 				"<img class='button' id='player_start' src='image/player_start.gif'>" +
 				"<img class='button' id='player_play' src='image/player_pause.gif'>" +
-				"<img class='button' id='player_stop' src='image/player_stop.gif'>" +	
-				"<img class='button' id='player_end' src='image/player_end.gif'>" +			
-				"<img class='button' id='player_volume' src='image/volume_medium.gif'>" +
+				"<img class='button' id='player_stop' src='image/player_stop.gif'>" +
+				"<img class='button' id='player_end' src='image/player_end.gif'>" +
 				"</div>" +
 				"<div>" +
 				"<img class='button' id='player_rew' src='image/player_rew.gif'>" +
@@ -41,6 +40,9 @@
 				"<img class='button' id='player_fwd' src='image/player_fwd.gif'>" + 
 				"</div>" +
 				"<div>" +
+				"<img class='button' id='player_volume' src='image/volume_medium.gif'>" +
+				"<meter class='progress' id='player_volume_slide' min='0' max='1'></meter>" +
+				"</div>" +
 				"<ol id='play_list'>"+
 				"</ol>" +
 				"</div>"
@@ -52,11 +54,14 @@
 			var isPlaying = true;			
 			var playImage = "image/player_play.gif";
 			var pauseImage = "image/player_pause.gif";
-			player.volume = finalOptions.audioVolume;
+			var volumePlay = finalOptions.audioVolume;			
+			player.volume = volumePlay;
+			var volumeTemp = 0;
+			var onMute = false;
 			var highImage = "image/volume_high.gif";
 			var mediumImage = "image/volume_medium.gif";
 			var lowImage = "image/volume_low.gif";
-			var muteImage = "image/volume_mute.gif";
+			var muteImage = "image/volume_muted.gif";
 
 			/* Progress */
 			$('#player_progress').attr('value', 0);
@@ -67,6 +72,9 @@
 				$('#player_progress').val(progr);
 			})
 
+			/* Volume */
+			$('#player_volume_slide').attr('value', player.volume);
+			volumeSong();
 
 			$(player).bind("ended", function(){
 				songCount++;
@@ -76,18 +84,18 @@
 				playSong();
 			})
 
-			// autoPlay ef finalOpstion autoPlay er á true
-			if(Modernizr.audio === true){
+			// autoPlay ef finalOptions autoPlay er á true
+			if(Modernizr.audio == true){
 				//setja inn loadPlaylist fallið sem tekur inn listan og ol elementið
 				loadPlaylist(playlist, "#play_list");
-				if(finalOptions.autoPlay === true){
+				if(finalOptions.autoPlay == true){
 					playSong();
-				}		
+				}
 			}
 
 			/* Play / Pause button */			
 			$('#player_play').click(function(){ 
-				if(isPlaying === true){
+				if(isPlaying == true){
 					pauseSong();
 				}
 				else{
@@ -101,13 +109,12 @@
 
 			$('#player_end').click(function(){ nextSong(); })
 			
-			$('#player_volume').click(function(){ palyerVolume(); })
-
+			$('#player_volume').click(function(){ volumeSong();})
 			/* Play / pause function. */
 			function playSong(){
 				$("#player_play").attr("src", pauseImage);
 				for (var i = 0; i < playlist.length; i++) {
-					$("#song" + i ).css("color", "#54AD0B");
+					$("#song" + i ).css("color", "#69DB0E");
 				};					
 				player.src = playlist[songCount];
 				$("#song" + songCount ).css("color", "#ff9f00");
@@ -165,6 +172,27 @@
 					playlistElem += "<li class='listElem' id='song" + i + "'>" + playlist[i] + "</il>";
 				};
 				$(unorderListElem).append(playlistElem)
+			}
+
+			function volumeSong(){
+				if(onMute === true){
+					player.volume = volumeTemp
+					onMute = false;
+					if(volumePlay > 0.7){
+						$("#player_volume").attr("src", highImage);
+					}
+					if(volumePlay < 0.4){
+						$("#player_volume").attr("src", lowImage);
+					}
+					else
+						$("#player_volume").attr("src", mediumImage);					
+				}
+				else{
+					volumeTemp = player.volume;
+					player.volume = 0;
+					onMute = true;
+					$("#player_volume").attr("src", muteImage);
+				}
 			}
 
 		});

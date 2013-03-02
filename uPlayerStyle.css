@@ -5,32 +5,36 @@
 
 #uPlayFrame {
 	padding-left: 20px;
-	width: 600px;
-	height: 380px;
+	width: 400px;
+	height: 480px;
 	border:5px solid #54AD0B;
 	border-radius:25px;
 }
 .button{
+	margin-left: 12px;
 	cursor: pointer;
-	height: 90px;
-	width: 90px;
+	height: 70px;
+	width: 70px;
 }
 #player_volume{
+	height: 40px;
+	width: 40px;
+}
+#player_volume_slide{
 	position: relative;
-	top: -15px;
-	height: 60px;
-	width: 60px;
+	top: -10px; /*eigum eftir að finna staðsetningu*/
+	left: 30px;
 }
 #player_progress{
 	position: relative;
-	top: -25px; /*eigum eftir að finna staðsetningu*/
+	top: -15px; /*eigum eftir að finna staðsetningu*/
 }
 .listElem{
 	font-size: 28px;
 	color: #54AD0B;
 }
 .progress { 
-	width: 230px;
+	width: 200px;
 	height: 40px;
 	background: #B9F84F;
 	border:5px solid #54AD0B;
