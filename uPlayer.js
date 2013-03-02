@@ -14,7 +14,7 @@
 			var defaultOptions = {
 				// more options is better than fewer
 				autoPlay: true,
-				defaultVolume: 0.5,
+				defaultVolume: 1,
 				errorMsg: "Unskyld men sangen kan ikke blive loaded"
 			};
 
@@ -32,12 +32,8 @@
 				"<img class='button' id='player_stop' src='image/player_stop.gif'>" +
 				"<img class='button' id='player_end' src='image/player_end.gif'>" +
 				"</div>" +
-				"<div>" +
-				"<img class='button' id='player_rew' src='image/player_rew.gif'>" +
-				"<span>" + 
+				"<div id='progressFunction'>" +
 				"<meter class='progress' id='player_progress' value='23' min='0' max='100'></meter>" +
-				"</span>" +
-				"<img class='button' id='player_fwd' src='image/player_fwd.gif'>" + 
 				"</div>" +
 				"<div>" +
 				"<img class='button' id='player_volume' src='image/volume_medium.gif'>" +
@@ -110,9 +106,23 @@
 			
 			$('#player_volume').click(function(){ volumeSong();})
 
-			$('#player_volume_slide').change(function(){
-				player.volume = $(this).val() / 10;
-			})
+			$('#player_volume_slide').click(function(e){
+				var offset = $(this).offset();
+        		player.volume = (e.clientX-offset.left)/$(this).width();
+        		//var max = $(this).attr("max");
+        		$("#player_volume_slide").attr("value", player.volume);
+        		if(player.volume == 0){
+        			$("#player_volume_slide").attr("src", muteImage);
+        		}
+        		else if(player.volume >= 0.7){
+					$("#player_volume").attr("src", highImage);
+				}
+				else if(player.volume <= 0.3){
+					$("#player_volume").attr("src", lowImage);
+				}
+				else
+					$("#player_volume").attr("src", mediumImage);
+        	})
 
 			/* Play / pause function. */
 			function playSong(){
@@ -182,10 +192,10 @@
 				if(onMute === true){
 					player.volume = volumeTemp
 					onMute = false;
-					if(volumePlay > 0.7){
+					if(volumePlay >= 0.7){
 						$("#player_volume").attr("src", highImage);
 					}
-					if(volumePlay < 0.4){
+					else if(volumePlay <= 0.3){
 						$("#player_volume").attr("src", lowImage);
 					}
 					else
