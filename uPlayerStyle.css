@@ -21,23 +21,26 @@
 	width: 40px;
 }
 #player_volume_slide{
-	position: relative;
+
 	top: -10px; /*eigum eftir að finna staðsetningu*/
 	left: 30px;
 }
 #player_progress{
 	position: relative;
 	top: -15px; /*eigum eftir að finna staðsetningu*/
+
 }
 .listElem{
 	font-size: 28px;
 	color: #54AD0B;
 }
 .progress { 
-	width: 200px;
-	height: 40px;
+	width: 170px;
+	height: 30px;
+	position: relative;
 	background: #B9F84F;
-	border:5px solid #54AD0B;
-	padding:10px 40px; 
+	border:3px solid #54AD0B;
+	padding:7px 7px; 
 	border-radius: 15px;
+
 }

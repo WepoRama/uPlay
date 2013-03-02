@@ -74,7 +74,6 @@
 
 			/* Volume */
 			$('#player_volume_slide').attr('value', player.volume);
-			volumeSong();
 
 			$(player).bind("ended", function(){
 				songCount++;
@@ -110,6 +109,11 @@
 			$('#player_end').click(function(){ nextSong(); })
 			
 			$('#player_volume').click(function(){ volumeSong();})
+
+			$('#player_volume_slide').change(function(){
+				player.volume = $(this).val() / 10;
+			})
+
 			/* Play / pause function. */
 			function playSong(){
 				$("#player_play").attr("src", pauseImage);
@@ -193,6 +197,7 @@
 					onMute = true;
 					$("#player_volume").attr("src", muteImage);
 				}
+				$("#player_volume_slide").val(player.volume);
 			}
 
 		});
